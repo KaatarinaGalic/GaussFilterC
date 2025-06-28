@@ -22,7 +22,7 @@ double* create_gaussian_kernel(int radius) {
 
     double* kernel = (double*)malloc(size * sizeof(double));
     if (!kernel) {
-        printf("Greöka: Nema dovoljno memorije za kernel.\n");
+        printf("Gre≈°ka: Nema dovoljno memorije za kernel.\n");
         exit(1);
     }
 
@@ -127,18 +127,18 @@ void vertical_blur(unsigned char* input, unsigned char* output, int width, int h
 }
 
 int main() {
-    const char* input_path = "D:/converted-image-_1_.bmp";
-    const char* output_seq_path = "D:/zamagljena_sekvencijalno.bmp";
-    const char* output_par_path = "D:/zamagljena_paralelno.bmp";
+    const char* input_path = "Slike/converted-image-_1_.bmp";
+    const char* output_seq_path = "Slike/zamagljena_sekvencijalno.bmp";
+    const char* output_par_path = "Slike/zamagljena_paralelno.bmp";
 
     int width, height, channels;
     unsigned char* input_image = stbi_load(input_path, &width, &height, &channels, 3);
     if (!input_image) {
-        printf("Greöka: Ne mogu uËitati sliku.\n");
+        printf("Gre≈°ka: Ne mogu u√®itati sliku.\n");
         return 1;
     }
 
-    printf("UËitana slika: %d x %d\n", width, height);
+    printf("U√®itana slika: %d x %d\n", width, height);
     printf("Kanali: %d\n", 3);
     printf("OpenMP niti (maks): %d\n", omp_get_max_threads());
 
@@ -168,7 +168,7 @@ int main() {
     printf("Vrijeme obrade slike sekvencijalno: %dms\n", duration_seq);
     stbi_write_bmp(output_seq_path, width, height, 3, output_seq);
 
-    // Oslobaanje memorije
+    // Osloba√∞anje memorije
     stbi_image_free(input_image);
     free(kernel);
     free(temp_seq);
