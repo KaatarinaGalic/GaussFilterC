@@ -134,7 +134,7 @@ int main() {
     int width, height, channels;
     unsigned char* input_image = stbi_load(input_path, &width, &height, &channels, 3);
     if (!input_image) {
-        printf("Greška: Ne mogu uèitati sliku.\n");
+        printf("Greška: Ne mogu uciitati sliku.\n");
         return 1;
     }
 
@@ -168,7 +168,7 @@ int main() {
     printf("Vrijeme obrade slike sekvencijalno: %dms\n", duration_seq);
     stbi_write_bmp(output_seq_path, width, height, 3, output_seq);
 
-    // Oslobaðanje memorije
+    // Oslobadanje memorije
     stbi_image_free(input_image);
     free(kernel);
     free(temp_seq);
