@@ -1,0 +1,4 @@
+﻿  Source.c
+C:\Users\hp probook\source\repos\Paealelno\Source.c(42,6): warning C4101: 'y': unreferenced local variable
+C:\Users\hp probook\source\repos\Paealelno\Source.c(65,6): warning C4101: 'y': unreferenced local variable
+  Paealelno.vcxproj -> C:\Users\hp probook\source\repos\Paealelno\x64\Debug\Paealelno.exe
