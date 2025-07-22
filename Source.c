@@ -14,7 +14,7 @@
 #define M_PI 3.14159265358979323846
 #endif
 
-// Gaussian kernel
+
 double* create_gaussian_kernel(int radius) {
     int size = 2 * radius + 1;
     double sigma = radius / 3.0;
@@ -127,18 +127,18 @@ void vertical_blur(unsigned char* input, unsigned char* output, int width, int h
 }
 
 int main() {
-    const char* input_path = "Slike/converted-image-_1_.bmp";
-    const char* output_seq_path = "Slike/zamagljena_sekvencijalno.bmp";
-    const char* output_par_path = "Slike/zamagljena_paralelno.bmp";
+    const char* input_path = "D:/converted-image-_1_.bmp";
+    const char* output_seq_path = "D:/zamagljena_sekvencijalno.bmp";
+    const char* output_par_path = "D:/zamagljena_paralelno.bmp";
 
     int width, height, channels;
     unsigned char* input_image = stbi_load(input_path, &width, &height, &channels, 3);
     if (!input_image) {
-        printf("Greška: Ne mogu uciitati sliku.\n");
+        printf("Greška: Ne mogu ucitati sliku.\n");
         return 1;
     }
 
-    printf("Uèitana slika: %d x %d\n", width, height);
+    printf("Ucitana slika: %d x %d\n", width, height);
     printf("Kanali: %d\n", 3);
     printf("OpenMP niti (maks): %d\n", omp_get_max_threads());
 
@@ -153,8 +153,8 @@ int main() {
     horizontal_blur(input_image, temp_par, width, height, 3, radius, kernel);
     vertical_blur(temp_par, output_par, width, height, 3, radius, kernel);
     double end_par = omp_get_wtime();
-    int duration_par = (int)((end_par - start_par) * 1000.0);
-    printf("Vrijeme obrade slike paralelno: %dms\n", duration_par);
+    double duration_par = end_par - start_par;
+    printf("Vrijeme obrade slike paralelno: %.3f sekundi\n", duration_par);
     stbi_write_bmp(output_par_path, width, height, 3, output_par);
 
     // SEKVENCIJALNA OBRADA
@@ -164,11 +164,11 @@ int main() {
     horizontal_blur_seq(input_image, temp_seq, width, height, 3, radius, kernel);
     vertical_blur_seq(temp_seq, output_seq, width, height, 3, radius, kernel);
     double end_seq = omp_get_wtime();
-    int duration_seq = (int)((end_seq - start_seq) * 1000.0);
-    printf("Vrijeme obrade slike sekvencijalno: %dms\n", duration_seq);
+    double duration_seq = end_seq - start_seq;
+    printf("Vrijeme obrade slike sekvencijalno: %.3f sekundi\n", duration_seq);
     stbi_write_bmp(output_seq_path, width, height, 3, output_seq);
 
-    // Oslobadanje memorije
+    // Oslobađanje memorije
     stbi_image_free(input_image);
     free(kernel);
     free(temp_seq);
