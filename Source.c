@@ -127,9 +127,9 @@ void vertical_blur(unsigned char* input, unsigned char* output, int width, int h
 }
 
 int main() {
-    const char* input_path = "D:/converted-image-_1_.bmp";
-    const char* output_seq_path = "D:/zamagljena_sekvencijalno.bmp";
-    const char* output_par_path = "D:/zamagljena_paralelno.bmp";
+    const char* input_path = "Slike/converted-image-_1_.bmp";
+    const char* output_seq_path = "Slike/zamagljena_sekvencijalno.bmp";
+    const char* output_par_path = "Slike/zamagljena_paralelno.bmp";
 
     int width, height, channels;
     unsigned char* input_image = stbi_load(input_path, &width, &height, &channels, 3);
